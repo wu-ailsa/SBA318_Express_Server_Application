@@ -13,7 +13,7 @@ This assessment measures your understanding of Node and Express and your capabil
 ## Submission
 Submit the link to your completed assessment using the Start Assignment button on the Assignment page in Canvas.
 Your submission should include:
-    * A link to the GitHub repository for your project.
+* A link to the GitHub repository for your project.
 ## Instructions
 You will create a small Node and Express server application. The topic and content of this application is entirely up to you; be creative!
 
