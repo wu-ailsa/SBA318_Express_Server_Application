@@ -28,8 +28,8 @@ Since topic and content are secondary to functionality for this assessment, we h
 ## Requirements
 The requirements listed here are absolute minimums. Ensure that your application meets these requirements before attempting to further expand your features.
 
-- [ ] Create and use at least two pieces of custom middleware.
-- [ ] Create and use error-handling middleware.
+- [x] Create and use at least two pieces of custom middleware.
+- [x] Create and use error-handling middleware.
 - [ ] Use at least three different data categories (e.g., users, posts, or comments).
 - [ ] Utilize reasonable data structuring practices.
 - [ ] Create GET routes for all data that should be exposed to the client.
@@ -37,8 +37,8 @@ The requirements listed here are absolute minimums. Ensure that your application
 - [ ] Adhere to the guiding principles of REST.
 - [ ] Create and render at least one view using a view template and template engine. This can be a custom template engine or a third-party engine.
 - [ ] Use simple CSS to style the rendered views.
-- [ ] Utilize reasonable code organization practices.
+- [x] Utilize reasonable code organization practices.
 - [ ] Ensure that the program runs without errors (comment out things that do not work, and explain your blockers - you can still receive partial credit).
-- [ ] Commit frequently to the git repository.
+- [x] Commit frequently to the git repository.
 - [x] Include a README file that contains a description of your application.
 - [ ] Level of effort displayed in creativity, presentation, and user experience.
