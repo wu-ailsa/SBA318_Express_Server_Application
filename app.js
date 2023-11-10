@@ -15,7 +15,7 @@ const logCapture = (req,res,next) => {
 
 // authentication middleware
 const userAuth = (req,res,next) => {
-    req.user = {id: 1, username: 'example_user'};
+    req.user = {id: 1, username: `${req.users.id}`}
     next()
 }
 
@@ -28,6 +28,7 @@ const errorHandler = (err, req,res,next) => {
 app.use(logCapture)
 app.use(userAuth)
 app.use(express.static('public'))
+app.use(errorHandler)
 
   //-------------------------------------------------//
  //         user, posts, comments data             //
@@ -61,3 +62,22 @@ const comments = [
 // ejs setup
 app.set('view engine', 'ejs');
 app.set('views', 'views');
+
+// routes for blogpost view
+app.get('/posts/:postId', (req, res, next) => {
+    const postId = parseInt(req.params.postId);
+    const post = posts.find(post => post.id === postId);
+    const postComments = comments.filter(comment => comment.postId === postId);
+  
+    // error simulation
+    if (!post) {
+      const err = new Error('Post not found');
+      err.status = 404;
+      
+      return next(err)
+    }
+    const loadError = req.query.imageError === 'true';
+
+    res.render('post', { post, comments: postComments, user: req.user,  loadError: loadError });
+  })
+  

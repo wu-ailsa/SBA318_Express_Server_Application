@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+  <title><%= post.title %></title>
+</head>
+<body>
+  <header>
+    <h1><%= post.title %></h1>
+    <p>By <%= user.username %></p>
+  </header>
+
+  <article>
+    <p><%= post.content %></p>
+  </article>
+
+  <section>
+    <h2>Comments</h2>
+    <ul>
+      <% comments.forEach(comment => { %>
+        <li><strong><%= comments.users.username %>:</strong> <%= comments.text %></li>
+      <% }); %>
+    </ul>
+  </section>
+
+<!-- this is bugged and needs fixing, I want to load an image on error if a page doesnt load -->
+<% if (loadError) { %>
+    <!-- Load a default image if there was an error loading the original image -->
+    <img src="/img/errordog.png" alt="There seems to be an error">
+<% } else { %>
+    <!-- Load the original image -->
+    <img src="/img/bloggingdog.png" alt="Blogging dogs, all is well">
+<% } %>
+
+</body>
+</html>
