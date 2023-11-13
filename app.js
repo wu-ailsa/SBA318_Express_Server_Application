@@ -14,10 +14,15 @@ const logCapture = (req,res,next) => {
 }
 
 // authentication middleware
-const userAuth = (req,res,next) => {
-    req.user = {id: 1, username: `${req.users.id}`}
-    next()
-}
+const userAuth = (req, res, next) => {
+    if (req.user) {
+        req.user = { id: req.user.id, username: req.user.username };
+    } else {
+        req.user = { id: 1, username: 'defaultUsername' };
+    }
+    next();
+};
+
 
 // error handling middleware
 const errorHandler = (err, req,res,next) => {
@@ -27,7 +32,7 @@ const errorHandler = (err, req,res,next) => {
 
 app.use(logCapture)
 app.use(userAuth)
-app.use(express.static('public'))
+app.use('/public', express.static('public'))
 app.use(errorHandler)
 
   //-------------------------------------------------//
@@ -44,7 +49,7 @@ const users = [
 const posts = [
     { id: 1, title: 'First Post: Creating RESTful APIs with Express.js: A Beginner\'s Guide ', content: 'In this beginner\'s guide, we\'ll embark on a journey to demystify the process of creating RESTful APIs using the powerful Node.js framework, Express.js. We\'ll start by laying down the foundational concepts of REST architecture and understanding how Express.js facilitates the development of robust and scalable APIs. From setting up your development environment to crafting endpoints that handle various HTTP methods, this guide will provide hands-on examples and practical tips to help you grasp the essentials. By the end, you\'ll have the confidence to kickstart your own RESTful API projects using Express.js, opening the door to seamless communication between your applications.' },
     { id: 2, title: 'Second Post: Mastering Express.js: A Comprehensive Guide for Node.js Developers', content: 'For Node.js developers aiming to elevate their skills, this comprehensive guide dives deep into the intricacies of Express.js, the popular web application framework. We\'ll cover advanced topics, such as routing, middleware, templating engines, and error handling, providing a holistic understanding of Express.js\'s capabilities. From structuring your application for scalability to integrating with databases and third-party APIs, this guide will equip you with the expertise needed to master Express.js. Whether you\'re building APIs, web applications, or real-time systems, this comprehensive guide will empower you to harness the full potential of Express.js for your Node.js projects.' },
-    { id: 3, title: 'Third Post: Building Scalable APIs with Node.js and Express: Best Practices', content: 'Scalability is a critical aspect of any successful API, and in this blog post, we\'ll explore the best practices for building scalable APIs using Node.js and Express. From optimizing route handlers to implementing caching strategies and load balancing, we\'ll delve into techniques that ensure your API can handle increased demand while maintaining performance. Whether you\'re a seasoned developer or just getting started, these best practices will guide you in architecting APIs that can grow seamlessly with the demands of your application and user base.' },
+    { id: 3, title: "Third Post: Building Scalable APIs with Node.js and Express: Best Practices", content: "Scalability is a critical aspect of any successful API, and in this blog post, we\'ll explore the best practices for building scalable APIs using Node.js and Express. From optimizing route handlers to implementing caching strategies and load balancing, we\'ll delve into techniques that ensure your API can handle increased demand while maintaining performance. Whether you\'re a seasoned developer or just getting started, these best practices will guide you in architecting APIs that can grow seamlessly with the demands of your application and user base." },
     { id: 4, title: 'Fourth Post: Real-time Applications with Node.js and Express: A Step-by-Step Tutorial', content: 'Embark on a hands-on journey to build real-time applications using Node.js and Express with our step-by-step tutorial. We\'ll guide you through the process of setting up a real-time server, handling WebSocket connections, and integrating with client-side frameworks for dynamic updates. By the end of this tutorial, you\'ll have the knowledge to create interactive and responsive real-time applications, opening doors to a new realm of possibilities for engaging user experiences.' },
     { id: 5, title: 'Fifth Post: Deep Dive into Middleware in Express.js: A Practical Guide', content: 'Middleware plays a pivotal role in Express.js, and in this practical guide, we\'ll take a deep dive into its intricacies. From understanding the middleware stack to creating custom middleware functions, you\'ll gain insights into how middleware enhances the functionality and flexibility of your Express.js applications. Practical examples and real-world scenarios will illustrate how to use middleware for tasks such as authentication, logging, and error handling. Whether you\'re a novice or an experienced developer, this guide will sharpen your understanding of middleware and empower you to leverage it effectively in your Express.js projects.' },
 ]

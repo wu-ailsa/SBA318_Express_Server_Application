@@ -30,13 +30,13 @@ The requirements listed here are absolute minimums. Ensure that your application
 
 - [x] Create and use at least two pieces of custom middleware.
 - [x] Create and use error-handling middleware.
-- [ ] Use at least three different data categories (e.g., users, posts, or comments).
+- [x] Use at least three different data categories (e.g., users, posts, or comments).
 - [ ] Utilize reasonable data structuring practices.
 - [ ] Create GET routes for all data that should be exposed to the client.
 - [ ] Utilize route parameters, where appropriate.
 - [ ] Adhere to the guiding principles of REST.
-- [ ] Create and render at least one view using a view template and template engine. This can be a custom template engine or a third-party engine.
-- [ ] Use simple CSS to style the rendered views.
+- [x] Create and render at least one view using a view template and template engine. This can be a custom template engine or a third-party engine.
+- [x] Use simple CSS to style the rendered views.
 - [x] Utilize reasonable code organization practices.
 - [ ] Ensure that the program runs without errors (comment out things that do not work, and explain your blockers - you can still receive partial credit).
 - [x] Commit frequently to the git repository.
