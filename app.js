@@ -74,15 +74,19 @@ app.get('/posts/:postId', (req, res, next) => {
     const post = posts.find(post => post.id === postId);
     const postComments = comments.filter(comment => comment.postId === postId);
   
+    // locate user by id
+    const userId = req.user ? req.user.id : 1; // Using default user ID if not available
+    const user = users.find(user => user.id === userId);
+
+
     // error simulation
     if (!post) {
       const err = new Error('Post not found');
       err.status = 404;
-      
       return next(err)
     }
     const loadError = req.query.imageError === 'true';
-
-    res.render('post', { post, comments: postComments, user: req.user,  loadError: loadError });
+    // send user details to the template
+    res.render('post', { post, comments: postComments, user, loadError});
   })
   
