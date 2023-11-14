@@ -73,11 +73,15 @@ app.get('/posts/:postId', (req, res, next) => {
     const postId = parseInt(req.params.postId);
     const post = posts.find(post => post.id === postId);
     const postComments = comments.filter(comment => comment.postId === postId);
+
+
+    postComments.forEach((comment) => {
+        comment.username = users.find(user => user.id === comment.userId).username;
+    });
   
     // locate user by id
     const userId = req.user ? req.user.id : 1; // Using default user ID if not available
     const user = users.find(user => user.id === userId);
-
 
     // error simulation
     if (!post) {

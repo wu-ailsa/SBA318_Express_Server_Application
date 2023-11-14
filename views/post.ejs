@@ -20,7 +20,7 @@
     <h2>Comments</h2>
     <ul>
       <% comments.forEach(comment => { %>
-        <li><strong><%= comments.users.username %>:</strong> <%= comments.text %></li>
+        <li><strong><%= comment.username %>:</strong> <%= comment.text %></li>
       <% }); %>
     </ul>
   </section>
